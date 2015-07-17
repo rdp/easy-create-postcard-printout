@@ -1,4 +1,5 @@
-require 'prawn'
+require 'prawn' # gem
+require './parse'
 
 
 Prawn::Document.generate("output.pdf",
@@ -6,9 +7,10 @@ Prawn::Document.generate("output.pdf",
  :page_layout => :landscape
 ) do
 
-  text "hello"
-
-
+  for page in get_all_addresses.each_slice(4)
+    text "hello #{page}"
+    start_new_page
+  end
 
 end
 
