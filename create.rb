@@ -3,7 +3,7 @@ require './parse'
 
 
 Prawn::Document.generate("output.pdf",
- :page_size => "LETTER", # 8.5x10 on its side
+ :page_size => "LETTER", # 8.5x10 on its side  612.00 x 792.00
  :page_layout => :landscape
 ) do
 
