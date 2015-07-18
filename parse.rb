@@ -7,7 +7,7 @@ rows.select!{|row|
   row["Street"] && row["City"] && row["Zip"]
 }
 rows.uniq! {|row| [row["Street"], row["City"]] } # TODO hit some api to make this even better too LOL
-rows.sort_by! {|row| [row["Street"], row["City"], row["Zip"]]}
+rows.sort_by! {|row| [row["Street"], row["City"], row["Zip"]]} # NB: non alphabetical here, in case you need them pre sorted by zip adjust this...
 
 rows.map{ |row|
   full_name = row["DESCENDANT First Name"] + " " + row["DESCENDANT Last Name"]
