@@ -15,12 +15,13 @@ rows.map{ |row|
   addr_line2 = row["City"] + " " + row["State Abbreviation"] + " " + row["Zip"]
   country = row["Country"] # they probably can't fly in so late LOL
   if country && country.downcase != 'usa'
+    next
     addr_line2 += ", #{country}"
   end
   output = "#{full_name} (and Family)\n#{addr_line1}\n#{addr_line2}\n\n"
   p output
   output
-}
+}.compact
 
 end
 

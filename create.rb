@@ -2,8 +2,9 @@ require 'prawn' # gem
 require './parse'
 
 Prawn::Document.generate("output.pdf",
- :page_size => "LETTER", # 8.5x10 on its side  612.00 x 792.00 but flipped since we're landscape :)
- :page_layout => :landscape
+ :page_size => "LETTER", # 8.5x11 on its side  612.00 x 792.00 but flipped since we're landscape :)
+ :page_layout => :landscape,
+ :margin => 0 # let me do my own margins :) XXXX do I want to? hrm...
 ) do
   width = 792
   height = 612
@@ -12,7 +13,7 @@ Prawn::Document.generate("output.pdf",
   # assume a margin of 20 all around so it can be printable
   # 0,0 is bottom left, like a grid
   middle_line = (height-20)/2 - 10 # - 10 I think it needs for the "first line" which gets written *up* from the current location [?]
-  middle_row = (width-20)/2
+  middle_row = (width-20)/2 + 20 # + 20 just to meet my criteria possibly :|
   top_line = height - 20*2 - 10 
   left_row = 20
   start_locs  = [[left_row, middle_line], [left_row, top_line], [middle_row, middle_line], [middle_row, top_line]]
@@ -37,4 +38,4 @@ Prawn::Document.generate("output.pdf",
 
 end
 
-
+p "did #{get_all_addresses.size} entries"
